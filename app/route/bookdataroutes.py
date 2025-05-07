@@ -10,6 +10,7 @@ from typing import List
 from ..auth.services.outh2 import get_current_user
 from ..schemas.schemas import UserCreate
 
+from ..crud.bookdatacrud import Create_book
 
 router = APIRouter(prefix="/books", tags=["BookData"])
 
@@ -20,16 +21,7 @@ def createBook(
     db: Session = Depends(get_db),
     current_user: UserCreate = Depends(get_current_user),
 ):
-    db_book = Book(
-        title=request.title,
-        author=request.author,
-        price=request.price,
-        creator_id=current_user.user_id,
-    )
-    db.add(db_book)
-    db.commit()
-    db.refresh(db_book)
-    return db_book
+    return Create_book(request, db , current_user)
 
 
 @router.get("/", response_model=List[BookRead])
