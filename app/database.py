@@ -16,6 +16,7 @@ Base = declarative_base()
 
 
 # Dependency to get DB session
+
 def get_db():
     db = SessionLocal()
     try:

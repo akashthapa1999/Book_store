@@ -2,10 +2,6 @@ from sqlalchemy.orm import Session
 from ..models.models import Book
 
 
-
-
-
-
 def Create_book(request, db:Session,  current_user ):
     db_book = Book(
     title=request.title,
