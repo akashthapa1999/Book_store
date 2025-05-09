@@ -23,7 +23,7 @@ class ShowBookRead(BaseModel):
     price: Optional[int] = None
     
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class ShowUserWithoutBood(BaseModel):
     id : int
@@ -31,7 +31,7 @@ class ShowUserWithoutBood(BaseModel):
     name : str
     
     class Config:
-        orm_moda = True
+        from_attributes = True
 
 
 
@@ -43,7 +43,7 @@ class ShowUser(BaseModel):
     bookdata : List[ShowBookRead] = []
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 
 class BookRead(BaseModel):
@@ -54,7 +54,7 @@ class BookRead(BaseModel):
     creator: ShowUserWithoutBood
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 
 
