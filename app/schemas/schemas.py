@@ -1,8 +1,11 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, HttpUrl
 from typing import Optional, List
 
 
 
+class ImageUploadResponse(BaseModel):
+    message: str
+    url: HttpUrl
 
 class UserCreate(BaseModel):
     email : str

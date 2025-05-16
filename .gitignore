@@ -5,7 +5,7 @@ __pycache__/
 
 # Virtual environment
 venv/
-.env/
+.env 
 
 # SQLite database or other local DBs
 *.db
@@ -39,3 +39,6 @@ build/
 dist/
 *.egg-info/
 .eggs/
+
+# Ignore AWS secret config
+app/aws_config_file/aws_secrets.py

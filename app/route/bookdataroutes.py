@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException,UploadFile, File, Form
 from fastapi.responses import JSONResponse
 
 
@@ -16,12 +16,18 @@ router = APIRouter(prefix="/books", tags=["BookData"])
 
 
 @router.post("/", response_model=BookRead)
-def createBook(
-    request: BookCreate,
+async def createBook(
+    title: str = Form(...),
+    author: str = Form(...),
+    price: int = Form(...),
+    image: UploadFile = File(...),
+
     db: Session = Depends(get_db),
     current_user: UserCreate = Depends(get_current_user),
 ):
-    return Create_book(request, db , current_user)
+    request = BookCreate(title=title,author=author,price=price)
+    
+    return await Create_book( request, image, db , current_user)
 
 
 @router.get("/", response_model=List[BookRead])
