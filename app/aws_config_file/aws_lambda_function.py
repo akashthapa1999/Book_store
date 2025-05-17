@@ -1,9 +1,7 @@
-
-
-
 import boto3
 import os
 import logging
+
 
 
 logger = logging.getLogger()
@@ -40,24 +38,26 @@ def lambda_handler(event, context):
 
 
 
+
 #Event of lambda
 
+
 # {
-# "Records": [
-# {
-# "eventVersion": "2.1",
-# "eventSource": "aws:s3",
-# "awsRegion": "us-east-1",
-# "eventTime": "2025-05-17T12:00:00.000Z",
-# "eventName": "ObjectCreated:Put",
-# "s3": {
-# "bucket": {
-# "name": "book-store-app-fastapi"
-# },
-# "object": {
-# "key": "images/patrick-tomasso-Oaqk7qqNh_c-unsplash.jpg"
-# }
-# }
-# }
-# ]
+#   "Records": [
+#     {
+#       "eventVersion": "2.1",
+#       "eventSource": "aws:s3",
+#       "awsRegion": "us-east-1",
+#       "eventTime": "2025-05-17T12:00:00.000Z",
+#       "eventName": "ObjectCreated:Put",
+#       "s3": {
+#         "bucket": {
+#           "name": "book-store-app-fastapi"
+#         },
+#         "object": {
+#           "key": "images/patrick-tomasso-Oaqk7qqNh_c-unsplash.jpg"
+#         }
+#       }
+#     }
+#   ]
 # }

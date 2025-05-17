@@ -6,6 +6,7 @@ import os
 from dotenv import load_dotenv
 
 
+
 load_dotenv()
 
 AWS_ACCESS_KEY_ID = os.getenv("AWS_ACCESS_KEY_ID")
@@ -43,3 +44,6 @@ async def upload_image(file: UploadFile = File(...)):
 
     except (BotoCoreError, ClientError) as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+
+
