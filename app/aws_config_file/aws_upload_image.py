@@ -1,9 +1,10 @@
-from fastapi import FastAPI, File, UploadFile, HTTPException
+from fastapi import File, UploadFile, HTTPException
 import boto3
 from botocore.exceptions import BotoCoreError, ClientError
 import os
 
 from dotenv import load_dotenv
+
 
 
 load_dotenv()
@@ -43,3 +44,6 @@ async def upload_image(file: UploadFile = File(...)):
 
     except (BotoCoreError, ClientError) as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+
+
