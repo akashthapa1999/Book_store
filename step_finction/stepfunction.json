@@ -1,0 +1,36 @@
+{
+  "Comment": "Route to different Lambdas based on event source",
+  "StartAt": "CheckSource",
+  "States": {
+    "CheckSource": {
+      "Type": "Choice",
+      "Choices": [
+        {
+          "Variable": "$.source",
+          "StringEquals": "s3",
+          "Next": "InvokeS3Lambda"
+        },
+        {
+          "Variable": "$.source",
+          "StringEquals": "sqs",
+          "Next": "InvokeSQSLambda"
+        }
+      ],
+      "Default": "FailState"
+    },
+    "InvokeS3Lambda": {
+      "Type": "Task",
+      "Resource": "arn:aws:lambda:ap-south-1:550513526501:function:book_store_copy_bucket",
+      "End": true
+    },
+    "InvokeSQSLambda": {
+      "Type": "Task",
+      "Resource": "arn:aws:lambda:ap-south-1:550513526501:function:SQS_lambda_function",
+      "End": true
+    },
+    "FailState": {
+      "Type": "Fail",
+      "Cause": "Unknown source type"
+    }
+  }
+}
